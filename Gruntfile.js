@@ -114,12 +114,12 @@ module.exports = function (grunt) {
             }
         },
 
-        ngmin: {
+        ngAnnotate: {
             compile: {
                 files: [
                     {
                         src: ['**/*.js'],
-                        cwd: '<%= build_dir %>',
+                        cwd: 'src',
                         dest: '<%= build_dir %>',
                         expand: true
                     }
@@ -173,7 +173,7 @@ module.exports = function (grunt) {
                 files: [
                     'src/**/*.js'
                 ],
-                tasks: ['jshint:src', 'karma:unit:run', 'ngmin', 'concat:compile_js', 'uglify:compile']
+                tasks: ['jshint:src', 'karma:unit:run', 'ngAnnotate', 'concat:compile_js', 'uglify:compile']
             },
 
             tpls: {
@@ -212,7 +212,7 @@ module.exports = function (grunt) {
         'sass',
         'karma:continuous',
         'cssmin:compile',
-        'ngmin',
+        'ngAnnotate',
         'concat:compile_js',
         'uglify:compile'
     ]);
